@@ -24,6 +24,7 @@
   ];
 
   home.packages = with pkgs; [
+    fastfetch
     nh
     nix-output-monitor
     spotify
