@@ -8,6 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
       ../../hardware/cpu/amd
       ../../hardware/gpu/amd
+      ../../hardware/HiDPI.nix
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" ];
