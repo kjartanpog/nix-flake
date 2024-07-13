@@ -81,11 +81,11 @@
     "dotfiles-kjartanm": {
       "flake": false,
       "locked": {
-        "lastModified": 1720872780,
-        "narHash": "sha256-cd+X5nsLhF79jSwAFL9e4Sf/jE/y6xO7kQlc2OV2H5M=",
+        "lastModified": 1720880697,
+        "narHash": "sha256-XLt8tD47Lxjm/1WTPhpCuDEs2QdlpMHaiwXtoeXbAlI=",
         "owner": "kjartanpog",
         "repo": "dotfiles",
-        "rev": "7713bb71787bc731a6b836f099e1ed3486b8127d",
+        "rev": "2a67f5b8f72e9a5b08c9487e251818c776c9e822",
         "type": "github"
       },
       "original": {
