@@ -44,7 +44,9 @@
       dynamic-workspaces = true;
       edge-tiling = true;
       workspaces-only-on-primary = true;
-      experimental-features = lib.mkIf ( config.environment.sessionVariables.HIDPI == "1" ) [
+      experimental-features =
+        # lib.mkIf ( config.environment.sessionVariables.HIDPI == "1" )
+      [
         # "variable-refresh-rate"
         "scale-monitor-framebuffer"
       ];
