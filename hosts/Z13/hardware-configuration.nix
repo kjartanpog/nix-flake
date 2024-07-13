@@ -13,7 +13,9 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
+  boot.kernelPackages = pkgs.linuxPackages_6_9;
   boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelParams = [ "amd_pstate=active" ];
   boot.extraModulePackages = [ ];
 
   # Enable OpenGL
