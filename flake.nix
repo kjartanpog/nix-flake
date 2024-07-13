@@ -80,6 +80,15 @@
     in
     {
       nixosConfigurations = {
+        Z13 = nixpkgs.lib.nixosSystem {
+            specialArgs = {inherit inputs;};
+            modules = [
+              inputs.home-manager.nixosModules.default
+              ./hosts/Z13/configuration.nix
+              ./overlay.nix
+              { nix.registry.nixpkgs.flake = nixpkgs; }
+            ];
+	};
         T14 = nixpkgs.lib.nixosSystem {
             specialArgs = {inherit inputs;};
             modules = [
