@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, config, ... }:
 
 {
   dconf.settings = {
@@ -44,10 +44,10 @@
       dynamic-workspaces = true;
       edge-tiling = true;
       workspaces-only-on-primary = true;
-      # experimental-features = [
-      #   "variable-refresh-rate"
-      #   "scale-monitor-framebuffer"
-      # ];
+      experimental-features = lib.mkIf ( config.environment.sessionVariables.HIDPI == "1" ) [
+        # "variable-refresh-rate"
+        "scale-monitor-framebuffer"
+      ];
     };
     # "org/gnome/desktop/interface" = {
     #   gtk-theme = "adw-gtk3";
