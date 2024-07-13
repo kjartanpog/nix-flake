@@ -32,7 +32,7 @@
     rclone
     protonmail-bridge
     protonmail-bridge-gui
-    fragments
+    # fragments
     discord
     morewaita-icon-theme
     yt-dlp
