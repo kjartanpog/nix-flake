@@ -25,6 +25,8 @@
 
   home.packages = with pkgs; [
     fastfetch
+    libva-utils
+    vdpauinfo
     nh
     nix-output-monitor
     spotify
