@@ -18,22 +18,6 @@
   boot.kernelParams = [ "amd_pstate=active" ];
   boot.extraModulePackages = [ ];
 
-  # Enable OpenGL
-  hardware.graphics = {
-    # enable = true;
-    # driSupport = true;
-    # driSupport32Bit = true;
-    extraPackages = with pkgs; [
-      # amdvlk # AMD Open Source Driver for Vulkan®
-      libvdpau-va-gl # VDPAU driver with OpenGL/VAAPI backend. H.264 only.
-      # vaapiVdpau # VDPAU driver for the VAAPI librar. Code has not been touched for years.
-    ];
-    extraPackages32 = with pkgs; [
-      # driversi686Linux.amdvlk
-      driversi686Linux.libvdpau-va-gl # VDPAU driver with OpenGL/VAAPI backend. H.264 only.
-      # driversi686Linux.vaapiVdpau # VDPAU driver for the VAAPI librar. Code has not been touched for years.
-    ];
-  };
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/d8ed70d3-b853-41ff-98ca-de42ddae104b";
