@@ -24,6 +24,8 @@
   ];
 
   home.packages = with pkgs; [
+    celeste
+    newsflash
     fastfetch
     libva-utils
     vdpauinfo
