@@ -24,6 +24,8 @@
   ];
 
   home.packages = with pkgs; [
+    runelite
+    wowup-cf
     celeste
     newsflash
     fastfetch
