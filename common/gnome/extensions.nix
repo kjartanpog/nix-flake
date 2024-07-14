@@ -3,7 +3,7 @@
     xremap
     caffeine
     appindicator
-    rclone-manager
+    # rclone-manager
     gsconnect
   ];
 }
