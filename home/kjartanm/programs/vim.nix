@@ -23,7 +23,7 @@
   };
 
   home.sessionVariables = {
-    "GVIM_ENABLE_WAYLAND" = 1;
+    # "GVIM_ENABLE_WAYLAND" = 1;
   };
 
   home.file.".gvimrc".source = "${inputs.dotfiles-kjartanm}/gvimrc";
