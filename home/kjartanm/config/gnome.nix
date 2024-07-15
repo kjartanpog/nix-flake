@@ -3,7 +3,7 @@
 {
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      # font-name = "Inter Variable 11";
+      font-name = "Inter Variable 11";
       # font-name = "Inter Variable, Light 11";
     };
 
