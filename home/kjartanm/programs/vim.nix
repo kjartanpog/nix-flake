@@ -19,6 +19,7 @@
       fzf-vim
       vim-lsp
       vim-lsp-settings
+      goyo-vim
     ];
   };
 
