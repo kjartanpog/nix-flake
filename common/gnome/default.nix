@@ -28,5 +28,7 @@
     mission-center
     celluloid
     papers
+    nautilus-python
+    turtle
   ];
 }
