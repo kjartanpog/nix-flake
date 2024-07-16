@@ -17,8 +17,8 @@
   boot.kernelPackages = pkgs.linuxPackages_6_9;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "kvm-amd" ];
-  boot.kernelParams = [ "amd_pstate=guided" ];
-  # boot.kernelParams = [ "amd_pstate=active" ];
+  # boot.kernelParams = [ "amd_pstate=guided" ];
+  boot.kernelParams = [ "amd_pstate=active" ];
   boot.extraModulePackages = [ ];
 
 
