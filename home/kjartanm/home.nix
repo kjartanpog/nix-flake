@@ -44,5 +44,6 @@
     morewaita-icon-theme
     yt-dlp
     amberol
+    brave
   ];
 }
