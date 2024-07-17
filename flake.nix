@@ -70,6 +70,8 @@
       url = "github:kjartanpog/dotfiles";
       flake = false;
     };
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -84,6 +86,7 @@
             specialArgs = {inherit inputs;};
             modules = [
               inputs.home-manager.nixosModules.default
+              inputs.nix-gaming.nixosModules.pipewireLowLatency
               ./hosts/Z13/configuration.nix
               ./overlay.nix
               { nix.registry.nixpkgs.flake = nixpkgs; }
