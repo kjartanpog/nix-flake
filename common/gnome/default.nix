@@ -25,6 +25,7 @@
   ]);
 
   environment.systemPackages = with pkgs; [
+    gnome-epub-thumbnailer # Thumbnailer for EPub and MOBI books
     mission-center
     celluloid
     papers
