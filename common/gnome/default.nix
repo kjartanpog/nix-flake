@@ -31,5 +31,6 @@
     papers
     nautilus-python
     turtle
+    gnome-network-displays
   ];
 }
