@@ -54,7 +54,7 @@
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
-    audio.enable = true;
+    audio.enable = true; # Use PipeWire as the primary sound server
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
