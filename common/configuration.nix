@@ -54,7 +54,7 @@
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
-    wireplumber.enable = true; # WirePlumber, a modular session / policy manager for PipeWire
+    wireplumber.enable = true; # A modular session / policy manager for PipeWire
     audio.enable = true; # Use PipeWire as the primary sound server
     enable = true;
     alsa.enable = true;
