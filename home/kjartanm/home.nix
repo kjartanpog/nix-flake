@@ -45,5 +45,6 @@
     yt-dlp
     amberol
     brave
+    obsidian
   ];
 }
