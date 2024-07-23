@@ -94,39 +94,43 @@
 
       settings = {
 
-        # Enable the Browser Console command line
+      # Enable the Browser Console command line
         "devtools.chrome.enabled" = true;
 
-        # Don't ask user for new extension privelages
+      # Don't ask user for new extension privelages
         "extensions.autoDisableScopes" = 0;
 
         "privacy.userContext.enabled" = true;
 
-        # Enable custom stylesheets (required for Gnome theme)
+      # Enable custom stylesheets (required for Gnome theme)
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "svg.context-properties.content.enabled" = true;
 
-        # Gnome Theme
+      # Gnome Theme
         "gnomeTheme.hideSingleTab" = true;
 
-        # Don't display bookmarks icon on toolbar
+      # Don't display bookmarks icon on toolbar
         "browser.toolbars.bookmarks.visibility" = "never";
 
-        # Disable Firefox sync
+      # Disable Firefox sync
         "identity.fxaccounts.enabled" = false;
 
-        # Disable Firefox view
+      # Disable Firefox view
         "browser.tabs.firefox-view" = false;
         "browser.tabs.firefox-view-next" = false;
         "browser.tabs.firefox-view-newIcon" = false;
         "browser.firefox-view.feature-tour" = ''"{\"screen\":\"\",\"complete\":true}"'';
 
-        # Remove Google Search Being Pinned By Default
-        # "browser.newtabpage.pinned" = "[]";
-        # "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "";
+      # Remove Google Search Being Pinned By Default
+      # "browser.newtabpage.pinned" = "[]";
+      # "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "";
 
+      # Show topsites shortcuts on new tab page
+        "browser.newtabpage.activity-stream.feeds.topsites" = true;
+      # Show weather on new tab page
         "browser.newtabpage.activity-stream.system.showWeather" = true;
-        "browser.newtabpage.activity-stream.newtabWallpapers.enabled" = true;
+      # Show wallpaper on new tab page
+          # "browser.newtabpage.activity-stream.newtabWallpapers.enabled" = true;
       };
 
       # Containers
