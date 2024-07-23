@@ -144,7 +144,7 @@
         ];
 
       # Remove pinned search engine shortcuts
-        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "";
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = false;
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
       # Show weather on new tab page
         "browser.newtabpage.activity-stream.system.showWeather" = true;
