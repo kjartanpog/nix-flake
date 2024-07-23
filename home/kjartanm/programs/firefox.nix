@@ -76,7 +76,7 @@
       isDefault = true;
 
       # Betterfox
-      extraConfig = builtins.readFile "${inputs.betterfox}/user.js" ++
+      extraConfig = (builtins.readFile "${inputs.betterfox}/user.js") +
       # Betterfox overrides
       ''
         user_pref("browser.newtabpage.activity-stream.feeds.topsites", true);
@@ -125,12 +125,20 @@
         "browser.tabs.firefox-view-newIcon" = false;
         "browser.firefox-view.feature-tour" = ''"{\"screen\":\"\",\"complete\":true}"'';
 
-      # Remove Google Search Being Pinned By Default
-      # "browser.newtabpage.pinned" = "[]";
-      # "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "";
+      # Manage pinned shortcuts
+        "browser.newtabpage.pinned" = [
+          {
+            url = "account.proton.me/drive";
+            label = "Drive";
+          }
+          {
+            url = "account.proton.me/mail";
+            label = "Mail";
+          }
+        ];
 
-      # Show topsites shortcuts on new tab page
-        "browser.newtabpage.activity-stream.feeds.topsites" = true;
+      # Remove pinned search engine shortcuts
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "";
       # Show weather on new tab page
         "browser.newtabpage.activity-stream.system.showWeather" = true;
       # Show wallpaper on new tab page
