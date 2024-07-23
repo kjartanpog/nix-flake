@@ -76,7 +76,11 @@
       isDefault = true;
 
       # Betterfox
-      extraConfig = builtins.readFile "${inputs.betterfox}/user.js";
+      extraConfig = builtins.readFile "${inputs.betterfox}/user.js" ++
+      # Betterfox overrides
+      ''
+        user_pref("browser.newtabpage.activity-stream.feeds.topsites", true);
+      '';
 
       # Gnome Theme
       userContent = ''@import "${inputs.firefox-gnome-theme}/userContent.css";'';
