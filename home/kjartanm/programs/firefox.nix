@@ -137,6 +137,10 @@
             url = "https://mail.proton.me";
             label = "Mail";
           }
+          {
+            url = "about:blank?x";
+            baseDomain = "";
+          }
         ];
 
       # Remove pinned search engine shortcuts
