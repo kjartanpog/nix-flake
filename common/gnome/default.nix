@@ -18,7 +18,7 @@
     geary # email reader
     evince # document viewer
     totem # video player
-    gnome-system-monitor # system monitor
+    # gnome-system-monitor # system monitor
     gnome.gnome-contacts # contacts manager
     gnome.gnome-music # music player
     yelp # help viewer
@@ -26,11 +26,12 @@
 
   environment.systemPackages = with pkgs; [
     gnome-epub-thumbnailer # Thumbnailer for EPub and MOBI books
-    mission-center
-    celluloid
-    papers
-    nautilus-python
-    turtle
+    mission-center # Monitor your CPU, Memory, Disk, Network and GPU usage
+    celluloid # Simple GTK frontend for the mpv video player
+    papers # The future gnome PDF viewer
+    nautilus-python # Nautilus Python plugin support
+    turtle # Git plugin for Nautilus
     gnome-network-displays
+    gnome-podcasts # Official Gnome podcast app
   ];
 }
