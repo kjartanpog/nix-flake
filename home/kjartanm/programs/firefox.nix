@@ -98,6 +98,9 @@
 
       settings = {
 
+      # Set Font
+        "font.name.serif.x-western" = "Inter Variable";
+
       # Enable the Browser Console command line
         "devtools.chrome.enabled" = true;
 
@@ -143,6 +146,8 @@
           }
         ];
 
+      # Remove default suggested sponsored site shortcuts
+        "browser.newtabpage.activity-stream.default.sites" = "https://nixos.org";
       # Remove pinned search engine shortcuts
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = false;
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
