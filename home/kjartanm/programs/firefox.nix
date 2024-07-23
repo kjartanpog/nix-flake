@@ -141,8 +141,11 @@
 
       # Remove pinned search engine shortcuts
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "";
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
       # Show weather on new tab page
         "browser.newtabpage.activity-stream.system.showWeather" = true;
+      # Disable sponsored top sites
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
       # Show wallpaper on new tab page
           # "browser.newtabpage.activity-stream.newtabWallpapers.enabled" = true;
       };
