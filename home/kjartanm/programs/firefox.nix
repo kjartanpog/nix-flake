@@ -128,11 +128,11 @@
       # Manage pinned shortcuts
         "browser.newtabpage.pinned" = [
           {
-            url = "account.proton.me/drive";
+            url = "https://account.proton.me/drive";
             label = "Drive";
           }
           {
-            url = "account.proton.me/mail";
+            url = "https://account.proton.me/mail";
             label = "Mail";
           }
         ];
