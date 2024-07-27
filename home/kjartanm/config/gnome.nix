@@ -47,7 +47,7 @@
       experimental-features =
         # lib.mkIf ( config.environment.sessionVariables.HIDPI == "1" )
       [
-        # "variable-refresh-rate"
+        "variable-refresh-rate"
         "scale-monitor-framebuffer"
       ];
     };
