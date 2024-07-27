@@ -47,5 +47,6 @@
     brave
     obsidian
     gimp
+    parabolic
   ];
 }
