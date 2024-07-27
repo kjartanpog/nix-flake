@@ -46,5 +46,6 @@
     amberol
     brave
     obsidian
+    gimp
   ];
 }
