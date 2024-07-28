@@ -48,5 +48,6 @@
     obsidian
     gimp
     parabolic
+    coppwr
   ];
 }
