@@ -49,5 +49,6 @@
     gimp
     parabolic
     coppwr
+    bustle # Graphical D-Bus message analyser and profiler
   ];
 }
