@@ -50,5 +50,6 @@
     parabolic
     coppwr
     bustle # Graphical D-Bus message analyser and profiler
+    alpaca # Ollama client made with GTK4 and Adwaita
   ];
 }
