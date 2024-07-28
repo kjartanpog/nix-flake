@@ -54,12 +54,12 @@
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
-    wireplumber.enable = true; # A modular session / policy manager for PipeWire
-    audio.enable = true; # Use PipeWire as the primary sound server
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true; # A modular session / policy manager for PipeWire
+    # audio.enable = true; # Use PipeWire as the primary sound server
     # lowLatency = {
     #   enable = true;
     #   quantum = 64;
