@@ -20,6 +20,14 @@
     ];
   };
 
+  # OpenCL parallel computing API
+  hardware.hardware.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+  ];
+  environment.systemPackages = with pkgs; [
+    clinfo
+  ];
+
   environment.sessionVariables = {
     # QT_WAYLAND_DECORATION = "gnome";
     # QT_QPA_PLATFORM = "wayland";
