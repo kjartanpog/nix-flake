@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }: {
   programs.thunderbird = {
     enable = true;
+    package = pkgs.thunderbird-128;
     settings = {
       "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       "svg.context-properties.content.enabled" = true;
@@ -38,5 +39,5 @@
   #     # version = "1.4";
   #   };
   # };
-  home.file.".thunderbird/kjartanMasson/chrome".source = inputs.thunderbird-gnome-theme;
+  # home.file.".thunderbird/kjartanMasson/chrome".source = inputs.thunderbird-gnome-theme;
 }
