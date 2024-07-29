@@ -61,6 +61,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    slippi-nix = {
+      url = "github:lytedev/slippi-nix";
+    };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -91,7 +95,7 @@
               ./overlay.nix
               { nix.registry.nixpkgs.flake = nixpkgs; }
             ];
-	};
+    };
         T14 = nixpkgs.lib.nixosSystem {
             specialArgs = {inherit inputs;};
             modules = [
