@@ -39,5 +39,5 @@
   #     # version = "1.4";
   #   };
   # };
-  # home.file.".thunderbird/kjartanMasson/chrome".source = inputs.thunderbird-gnome-theme;
+  home.file.".thunderbird/kjartanMasson/chrome".source = inputs.thunderbird-gnome-theme;
 }
