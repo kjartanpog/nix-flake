@@ -62,7 +62,8 @@
     };
 
     slippi-nix = {
-      url = "github:lytedev/slippi-nix";
+      # url = "github:lytedev/slippi-nix";
+      url = "github:kjartanpog/slippi-nix";
     };
 
     nixvim = {

@@ -863,15 +863,15 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1721686199,
-        "narHash": "sha256-4rMu207y5HCLkRDbZXdFhFqAfDKxwCJ1r9UOsXmef4Q=",
-        "owner": "lytedev",
+        "lastModified": 1722253301,
+        "narHash": "sha256-WxcBmuEIXP8exEtinzh6tuxd9UO6ZL+CzvJ+LLDqlQ4=",
+        "owner": "kjartanpog",
         "repo": "slippi-nix",
-        "rev": "2b9673de8ec491be1c3ad8d23461b1fe5f2736b0",
+        "rev": "bbee80a39c071810c965390ed5ef33f25d52794d",
         "type": "github"
       },
       "original": {
-        "owner": "lytedev",
+        "owner": "kjartanpog",
         "repo": "slippi-nix",
         "type": "github"
       }
