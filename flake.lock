@@ -863,11 +863,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1722253301,
-        "narHash": "sha256-WxcBmuEIXP8exEtinzh6tuxd9UO6ZL+CzvJ+LLDqlQ4=",
+        "lastModified": 1722255194,
+        "narHash": "sha256-9WgeLf3ilb5Nm7BgHSvflDLQopnXtuAFWA7QaeF1E/g=",
         "owner": "kjartanpog",
         "repo": "slippi-nix",
-        "rev": "bbee80a39c071810c965390ed5ef33f25d52794d",
+        "rev": "9c782ab4541002dc403a30635a3b370d15c383ec",
         "type": "github"
       },
       "original": {
