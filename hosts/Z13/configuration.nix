@@ -39,4 +39,8 @@
 
   # Configure console keymap
   console.keyMap = "is-latin1";
+
+  # Attempt to fix Alsa issues
+  # (From nix-hardware)
+  environment.etc."asound.conf".source = ./asound.conf;
 }
