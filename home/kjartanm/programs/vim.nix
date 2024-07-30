@@ -14,8 +14,6 @@
       vim-rose-pine
       vim-healthcheck
       vimwiki
-      # vim-pandoc
-      # vim-pandoc-syntax
       fzf-vim
       vim-lsp
       vim-lsp-settings
