@@ -10,6 +10,7 @@
       vim-surround
       vim-commentary
       vim-fugitive
+      vim-unimpaired
       vim-gitgutter
       vim-rose-pine
       vim-healthcheck
