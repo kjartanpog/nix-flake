@@ -20,7 +20,7 @@
     ./email.nix
     ./defaultApps.nix
     ./LSP.nix
-    inputs.nixvim.homeManagerModules.nixvim
+    # inputs.nixvim.homeManagerModules.nixvim
   ];
 
   home.packages = with pkgs; [

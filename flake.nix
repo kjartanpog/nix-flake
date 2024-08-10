@@ -77,9 +77,14 @@
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
+
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs:
     let
       system = "x86_64-linux";
       nixpkgsUnfree = nixpkgs { config.allowUnfree = true; };
@@ -95,6 +100,13 @@
               ./hosts/Z13/configuration.nix
               ./overlay.nix
               { nix.registry.nixpkgs.flake = nixpkgs; }
+              {
+                nix.settings = {
+                  substituters = [ "https://cosmic.cachix.org/" ];
+                  trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+                };
+              }
+              nixos-cosmic.nixosModules.default
             ];
     };
         T14 = nixpkgs.lib.nixosSystem {

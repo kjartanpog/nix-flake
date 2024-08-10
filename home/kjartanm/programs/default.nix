@@ -6,7 +6,7 @@
     # ./fastfetch.nix
     ./thunderbird.nix
     ./fzf.nix
-    ./nixvim.nix
+    # ./nixvim.nix
     ./git.nix
     ./slippi.nix
     ./lsd.nix
