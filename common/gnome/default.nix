@@ -30,7 +30,7 @@
     celluloid # Simple GTK frontend for the mpv video player
     papers # The future gnome PDF viewer
     nautilus-python # Nautilus Python plugin support
-    turtle # Git plugin for Nautilus
+    # turtle # Git plugin for Nautilus
     gnome-network-displays
     gnome-podcasts # Official Gnome podcast app
   ];
