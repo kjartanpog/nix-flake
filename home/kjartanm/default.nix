@@ -8,6 +8,8 @@
     shell = pkgs.fish;
   };
 
+  programs.fish.enable = true;
+
   # Needed for xremap
   users.groups = {
     uinput.members = [ "kjartanm" ];
