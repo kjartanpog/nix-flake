@@ -9,6 +9,14 @@
       set fish_cursor_insert line
       set fish_cursor_replace_one underscore
       set fish_cursor_replace underscore
+      function v
+        if [ -n "$VIM_TERMINAL" ]
+          set filename (realpath $argv[1] | string collect; or echo)
+          echo -e '\\e]51;["drop", "'"$filename"'"]\\07'
+        else
+          vim $argv[1]
+        end
+      end
     '';
   };
 }
