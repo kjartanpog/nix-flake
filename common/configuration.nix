@@ -15,6 +15,7 @@
     ./steam.nix
     ./packages.nix
     ./index.nix
+    ./printer.nix
     ../hardware/keyboard
     ../hardware/bluetooth.nix
     ../hardware/gcAdapter.nix

@@ -2,7 +2,7 @@
   fonts = {
     packages = with pkgs; [
       inter
-      (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
+      (nerdfonts.override { fonts = [ "SourceCodePro" "Hasklig" ]; })
     ];
     fontconfig = {
       localConf = ''
