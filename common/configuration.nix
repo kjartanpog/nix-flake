@@ -53,14 +53,14 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  # hardware.pulseaudio.enable = true;
   security.rtkit.enable = true;
-  hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+  hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.enable = false;
+  # services.pipewire = {
+  #   enable = true;
+  #   alsa.enable = true;
+  #   alsa.support32Bit = true;
+  #   pulse.enable = true;
   #   wireplumber.enable = true; # A modular session / policy manager for PipeWire
   #   # audio.enable = true; # Use PipeWire as the primary sound server
   #   # lowLatency = {
@@ -68,7 +68,7 @@
   #   #   quantum = 64;
   #   #   rate = 48000;
   #   # };
-  };
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
