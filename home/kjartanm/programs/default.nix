@@ -11,6 +11,7 @@
     ./slippi.nix
     ./lsd.nix
     ./kitty.nix
+    ./fish.nix
     # ./starship.nix
   ];
 }
