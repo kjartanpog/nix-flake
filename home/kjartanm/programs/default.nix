@@ -10,6 +10,7 @@
     ./git.nix
     ./slippi.nix
     ./lsd.nix
+    ./kitty.nix
     # ./starship.nix
   ];
 }
