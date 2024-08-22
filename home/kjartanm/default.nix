@@ -5,6 +5,7 @@
     isNormalUser = true;
     description = "Kjartan Masson";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
   };
 
   # Needed for xremap
