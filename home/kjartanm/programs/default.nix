@@ -13,5 +13,6 @@
     ./kitty.nix
     ./fish.nix
     # ./starship.nix
+    ./zen.nix
   ];
 }
