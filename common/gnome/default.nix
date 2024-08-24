@@ -26,7 +26,7 @@
 
   environment.systemPackages = with pkgs; [
     gnome-epub-thumbnailer # Thumbnailer for EPub and MOBI books
-    mission-center # Monitor your CPU, Memory, Disk, Network and GPU usage
+    resources # Monitor your system resources and processes
     celluloid # Simple GTK frontend for the mpv video player
     papers # The future gnome PDF viewer
     nautilus-python # Nautilus Python plugin support
