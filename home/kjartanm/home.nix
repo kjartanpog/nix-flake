@@ -9,6 +9,7 @@
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "wayland";
     FLAKE = "/home/kjartanm/Nix";
     DF = "/home/kjartanm/.dotfiles";
     DOTFILES = "/home/kjartanm/.dotfiles";
