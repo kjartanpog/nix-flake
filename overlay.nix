@@ -12,11 +12,15 @@
             name = "vim-healthscheck ";
             src = inputs.vim-healthcheck;
           };
+          nvim-r = super.vimUtils.buildVimPlugin {
+            name = "nvim-r";
+            src = inputs.nvim-r;
+          };
         in
         {
           vimPlugins =
             super.vimPlugins // {
-              inherit vim-rose-pine vim-healthcheck;
+              inherit vim-rose-pine vim-healthcheck nvim-r;
             };
         }
       )

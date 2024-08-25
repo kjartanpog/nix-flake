@@ -19,6 +19,7 @@
       vim-lsp
       vim-lsp-settings
       goyo-vim
+      nvim-r
     ];
   };
 

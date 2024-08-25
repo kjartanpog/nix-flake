@@ -26,6 +26,11 @@
       flake = false;
     };
 
+    nvim-r = {
+      url = "github:jalvesaq/Nvim-R";
+      flake = false;
+    };
+
     vim-spellfile-is = {
       url = "github:recette-lemon/vim-spell-is";
       flake = false;
