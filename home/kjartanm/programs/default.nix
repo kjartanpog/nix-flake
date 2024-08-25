@@ -14,5 +14,6 @@
     ./fish.nix
     # ./starship.nix
     ./zen.nix
+    ./rstudio.nix
   ];
 }
