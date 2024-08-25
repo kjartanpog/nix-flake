@@ -13,5 +13,7 @@
 {
   home.packages = [
     RStudio-with-my-packages
+    pkgs.texlive.combined.scheme-full
+    pkgs.pandoc
   ];
 }
