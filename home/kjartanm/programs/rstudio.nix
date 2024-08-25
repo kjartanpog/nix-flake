@@ -6,6 +6,7 @@
         dplyr
         xts
         vitae
+        tidyverse
       ];
     };
   in
