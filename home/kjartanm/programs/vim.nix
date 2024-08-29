@@ -23,7 +23,7 @@
       # julia-vim
       vim-slime
       nerdtree
-      vim-vinegar
+      # vim-vinegar
     ];
   };
 
