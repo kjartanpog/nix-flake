@@ -1,9 +1,6 @@
 { pkgs, ... }:
   let
     MyRPackages = with pkgs.rPackages; [
-      ggplot2
-      dplyr
-      xts
       vitae
       tidyverse
       learnr
@@ -12,6 +9,10 @@
     ];
     RStudio-with-my-packages = pkgs.rstudioWrapper.override{ packages = MyRPackages; };
     R-with-my-packages = pkgs.rWrapper.override{ packages = MyRPackages; };
+
+    Quarto-with-my-packages = pkgs.quarto.override( prev: {
+      extraRPackages = MyRPackages;
+    });
   in
 {
   home.packages = [
@@ -19,5 +20,6 @@
     RStudio-with-my-packages
     pkgs.texlive.combined.scheme-full
     pkgs.pandoc
+    Quarto-with-my-packages
   ];
 }
