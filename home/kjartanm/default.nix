@@ -5,10 +5,10 @@
     isNormalUser = true;
     description = "Kjartan Masson";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
+    # shell = pkgs.fish;
   };
 
-  programs.fish.enable = true;
+  # programs.fish.enable = true;
 
   # Needed for xremap
   users.groups = {

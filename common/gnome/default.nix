@@ -20,7 +20,7 @@
     totem # video player
     # gnome-system-monitor # system monitor
     gnome.gnome-contacts # contacts manager
-    gnome.gnome-music # music player
+    # gnome.gnome-music # music player
     yelp # help viewer
   ]);
 

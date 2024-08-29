@@ -60,19 +60,9 @@
       url = "github:xremap/nix-flake";
     };
 
-    ssbm-nix = {
-      # url = "github:lytedev/ssbm-nix/041f495ab6446e6edd22c1a5fbd48dd704c5b9a6";
-      url = "github:lytedev/ssbm-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     slippi-nix = {
-      url = "github:lytedev/slippi-nix";
-      # url = "github:kjartanpog/slippi-nix";
-    };
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
+      # url = "github:lytedev/slippi-nix";
+      url = "github:kjartanpog/slippi-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

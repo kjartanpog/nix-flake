@@ -19,7 +19,9 @@
       vim-lsp
       vim-lsp-settings
       goyo-vim
-      nvim-r
+      # nvim-r
+      # julia-vim
+      vim-slime
     ];
   };
 

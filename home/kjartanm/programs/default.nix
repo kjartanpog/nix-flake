@@ -11,7 +11,7 @@
     ./slippi.nix
     ./lsd.nix
     ./kitty.nix
-    ./fish.nix
+    # ./fish.nix
     # ./starship.nix
     ./zen.nix
     ./rstudio.nix

@@ -79,7 +79,8 @@
       extraConfig = (builtins.readFile "${inputs.betterfox}/user.js") +
       # Betterfox overrides
       ''
-        user_pref("browser.newtabpage.activity-stream.feeds.topsites", true);
+        user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
+        user_pref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
       '';
 
       # Gnome Theme

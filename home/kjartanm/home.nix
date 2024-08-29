@@ -9,7 +9,7 @@
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    QT_QPA_PLATFORM = "wayland";
+    # QT_QPA_PLATFORM = "xcb";
     FLAKE = "/home/kjartanm/Nix";
     DF = "/home/kjartanm/.dotfiles";
     DOTFILES = "/home/kjartanm/.dotfiles";
@@ -25,7 +25,7 @@
   ];
 
   home.packages = with pkgs; [
-    runelite
+    # runelite
     wowup-cf
     celeste
     newsflash
@@ -34,7 +34,7 @@
     vdpauinfo
     nh
     nix-output-monitor
-    spotify
+    # spotify
     foliate
     proton-pass
     rclone
@@ -44,7 +44,7 @@
     discord
     morewaita-icon-theme
     yt-dlp
-    amberol
+    # amberol
     brave
     obsidian
     gimp
@@ -55,5 +55,6 @@
     davinci-resolve
     krita
     libreoffice-qt6-fresh
+    eartag
   ];
 }
