@@ -26,6 +26,7 @@
       # vim-vinegar
       quarto-vim
       vim-pandoc-syntax
+      asyncrun-vim
     ];
   };
 
