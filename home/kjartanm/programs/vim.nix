@@ -22,6 +22,8 @@
       # nvim-r
       # julia-vim
       vim-slime
+      nerdtree
+      vim-vinegar
     ];
   };
 
