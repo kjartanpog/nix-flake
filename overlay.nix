@@ -16,11 +16,15 @@
             name = "nvim-r";
             src = inputs.nvim-r;
           };
+          quarto-vim = super.vimUtils.buildVimPlugin {
+            name = "quarto-vim";
+            src = inputs.quarto-vim;
+          };
         in
         {
           vimPlugins =
             super.vimPlugins // {
-              inherit vim-rose-pine vim-healthcheck nvim-r;
+              inherit vim-rose-pine vim-healthcheck nvim-r quarto-vim;
             };
         }
       )

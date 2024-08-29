@@ -24,6 +24,8 @@
       vim-slime
       # nerdtree
       # vim-vinegar
+      quarto-vim
+      vim-pandoc-syntax
     ];
   };
 
