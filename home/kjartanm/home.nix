@@ -56,5 +56,6 @@
     krita
     libreoffice-qt6-fresh
     eartag
+    quarto
   ];
 }
