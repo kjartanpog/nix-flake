@@ -747,6 +747,22 @@
         "type": "github"
       }
     },
+    "photoGIMP": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721495474,
+        "narHash": "sha256-tWbkHf0Es/I0oLooep+GIFhFXWgGxanBUUCpzHMzC1I=",
+        "owner": "Diolinux",
+        "repo": "PhotoGIMP",
+        "rev": "94ab263bec885f5236e7f4548dc51fbac4e21685",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Diolinux",
+        "repo": "PhotoGIMP",
+        "type": "github"
+      }
+    },
     "programsdb": {
       "inputs": {
         "nixpkgs": [
@@ -768,6 +784,22 @@
         "type": "github"
       }
     },
+    "quarto-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1658588122,
+        "narHash": "sha256-HTqvZQY6TmVOWzI5N4LEaYfLg1AxWJZ6IjHhwuYQwI8=",
+        "owner": "quarto-dev",
+        "repo": "quarto-vim",
+        "rev": "216247339470794e74a5fda5e5515008d6dc1057",
+        "type": "github"
+      },
+      "original": {
+        "owner": "quarto-dev",
+        "repo": "quarto-vim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "betterfox": "betterfox",
@@ -780,7 +812,9 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nvim-r": "nvim-r",
+        "photoGIMP": "photoGIMP",
         "programsdb": "programsdb",
+        "quarto-vim": "quarto-vim",
         "slippi-nix": "slippi-nix",
         "thunderbird-gnome-theme": "thunderbird-gnome-theme",
         "vim-healthcheck": "vim-healthcheck",

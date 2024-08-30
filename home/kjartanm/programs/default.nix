@@ -15,5 +15,6 @@
     # ./starship.nix
     ./zen.nix
     ./rstudio.nix
+    ./gimp.nix
   ];
 }

@@ -84,6 +84,11 @@
     };
 
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+
+    photoGIMP = {
+      url = "github:Diolinux/PhotoGIMP";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs:

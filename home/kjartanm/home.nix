@@ -47,7 +47,7 @@
     # amberol
     brave
     obsidian
-    gimp
+    # gimp
     parabolic
     coppwr
     bustle # Graphical D-Bus message analyser and profiler
