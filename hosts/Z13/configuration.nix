@@ -42,5 +42,5 @@
 
   # Attempt to fix Alsa issues
   # (From nix-hardware)
-  environment.etc."asound.conf".source = ./asound.conf;
+  # environment.etc."asound.conf".source = ./asound.conf;
 }

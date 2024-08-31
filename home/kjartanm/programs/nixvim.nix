@@ -1,7 +1,7 @@
-{ inputs, pkgs, ... }: {
+{ inputs, ... }: {
 
-  home.packages = with pkgs; [
-    neovim-gtk
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
   ];
 
   programs.nixvim = {

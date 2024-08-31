@@ -89,6 +89,11 @@
       url = "github:Diolinux/PhotoGIMP";
       flake = false;
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs:
