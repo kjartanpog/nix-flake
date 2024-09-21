@@ -2,12 +2,13 @@
 {
   nixpkgs = {
     overlays = [
+      (import inputs.emacs-overlay)
       (self: super:
         let
-          vim-rose-pine = super.vimUtils.buildVimPlugin {
-            name = "vim-rose-pine";
-            src = inputs.vim-rose-pine;
-          };
+          # vim-rose-pine = super.vimUtils.buildVimPlugin {
+          #   name = "vim-rose-pine";
+          #   src = inputs.vim-rose-pine;
+          # };
           vim-healthcheck = super.vimUtils.buildVimPlugin {
             name = "vim-healthscheck ";
             src = inputs.vim-healthcheck;
@@ -24,7 +25,8 @@
         {
           vimPlugins =
             super.vimPlugins // {
-              inherit vim-rose-pine vim-healthcheck nvim-r quarto-vim;
+              # inherit vim-rose-pine vim-healthcheck nvim-r quarto-vim;
+              inherit vim-healthcheck nvim-r quarto-vim;
             };
         }
       )

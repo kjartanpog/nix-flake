@@ -3,7 +3,6 @@
   # :h ins-completion
   programs.vim = {
     enable = true;
-    # extraConfig = builtins.readFile ../dotfiles/vimrc;
     extraConfig = builtins.readFile "${inputs.dotfiles-kjartanm}/vimrc";
     plugins = with pkgs.vimPlugins; [
       vim-signature
@@ -12,21 +11,24 @@
       vim-fugitive
       vim-unimpaired
       vim-gitgutter
-      vim-rose-pine
+      (
+          pkgs.vimUtils.buildVimPlugin {
+            name = "vim-rose-pine";
+            src = inputs.vim-rose-pine;
+          })
       vim-healthcheck
       vimwiki
       fzf-vim
       vim-lsp
       vim-lsp-settings
       goyo-vim
-      # nvim-r
-      # julia-vim
+      limelight-vim
       vim-slime
-      # nerdtree
-      # vim-vinegar
       quarto-vim
       vim-pandoc-syntax
       asyncrun-vim
+      vim-which-key
+      vim-floaterm
     ];
   };
 

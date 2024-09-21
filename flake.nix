@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
+    nixpkgs_24-05.url = "github:nixos/nixpkgs?ref=nixos-24.05";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     programsdb = {
@@ -92,8 +94,41 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    rose-pine-black-box = {
+      url = "github:rose-pine/black-box";
+      flake = false;
+    };
+
+    rose-pine-yazi = {
+      url = "github:Msouza91/rose-pine.yazi";
+      flake = false;
+    };
+
+    whiskers = {
+      url = "github:igrmk/whiskers";
+      flake = false;
+    };
+
+    pinerose-emacs = {
+      url = "github:konrad1977/pinerose-emacs";
+      flake = false;
+    };
+
+    nix-doom-emacs-unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+      # Optional, to download less. Neither the module nor the overlay uses this input.
+      inputs.nixpkgs.follows = "";
+    };
+
+    rose-pine-doom-emacs = {
+      url = "github:donniebreve/rose-pine-doom-emacs";
+      flake = false;
+    };
+    # inputs.emacs-overlay.url = "github:nix-community/emacs-overlay/da2f552d133497abd434006e0cae996c0a282394";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
   outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs:
@@ -114,8 +149,10 @@
               { nix.registry.nixpkgs.flake = nixpkgs; }
               {
                 nix.settings = {
-                  substituters = [ "https://cosmic.cachix.org/" ];
-                  trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+                  substituters = [ "https://cache.nixos.org" ];
+                  trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+              #     substituters = [ "https://cosmic.cachix.org/" ];
+              #     trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
                 };
               }
               nixos-cosmic.nixosModules.default

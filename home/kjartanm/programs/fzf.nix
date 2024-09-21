@@ -2,6 +2,7 @@
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
+    enableFishIntegration = false;
     # Rosepine colorscheme
     colors = {
       "fg" = "#908caa";

@@ -9,7 +9,6 @@
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    # QT_QPA_PLATFORM = "xcb";
     FLAKE = "/home/kjartanm/Nix";
     DF = "/home/kjartanm/.dotfiles";
     DOTFILES = "/home/kjartanm/.dotfiles";
@@ -27,7 +26,7 @@
   home.packages = with pkgs; [
     # runelite
     wowup-cf
-    celeste
+    # celeste
     newsflash
     fastfetch
     libva-utils
@@ -37,7 +36,7 @@
     # spotify
     foliate
     proton-pass
-    rclone
+    # rclone
     protonmail-bridge
     protonmail-bridge-gui
     # fragments
@@ -48,14 +47,30 @@
     brave
     obsidian
     # gimp
-    parabolic
+    # parabolic
     coppwr
     bustle # Graphical D-Bus message analyser and profiler
-    alpaca # Ollama client made with GTK4 and Adwaita
+    # alpaca # Ollama client made with GTK4 and Adwaita
     davinci-resolve
     krita
     libreoffice-qt6-fresh
     eartag
+    toipe
+    fractal
     # quarto
+    easyeffects
+    pwvucontrol
+    helvum
+    ferdium
+    # (
+    #   ferdium.overrideAttrs (newAttrs: oldAttrs: { 
+    #     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.wrapGAppsHook3 ];
+    #   })
+    # )
+    bottles
   ];
+
+  home.shellAliases = {
+    y = "yazi";
+  };
 }

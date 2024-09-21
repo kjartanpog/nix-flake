@@ -32,6 +32,7 @@
         "appindicatorsupport@rgcjonas.gmail.com"
         "rclone-manager@germanztz.com"
         "gsconnect@andyholmes.github.io"
+	"unite@hardpixel.eu"
       ];
     };
 
@@ -49,6 +50,7 @@
       [
         "variable-refresh-rate"
         "scale-monitor-framebuffer"
+        # "xwayland-native-scaling"
       ];
     };
     # "org/gnome/desktop/interface" = {

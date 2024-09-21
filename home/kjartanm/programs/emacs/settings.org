@@ -1,0 +1,644 @@
+
+#+TITLE: My GNU Emacs Config
+#+AUTHOR: Kjartan Másson
+
+* Initialize
+
+Here's some text for you
+
+#+begin_src emacs-lisp
+  (eval-when-compile
+    (require 'use-package)
+    ;; (setq use-package-always-ensure t)
+    )
+#+end_src
+
+** Inspiration
+
+[[https://karthinks.com/software/emacs-window-management-almanac/][The Emacs Window Management Almanac]]
+* Fonts
+#+begin_src emacs-lisp
+  (set-face-attribute 'default nil
+    :font "Hasklug Nerd Font Mono"
+    :height 140
+    :weight 'medium)
+  (set-face-attribute 'fixed-pitch nil
+    :font "Hasklug Nerd Font Mono"
+    :height 140
+    ;; :weight 'medium
+    )
+  (set-face-attribute 'variable-pitch nil
+    :font "Inter Display"
+    :height 230
+    :weight 'medium)
+#+end_src
+
+*** Icons
+
+#+begin_src emacs-lisp
+  (use-package nerd-icons
+    :ensure t
+    :custom
+    (nerd-icons-font-family "Hasklug Nerd Font Mono")
+    )
+#+end_src
+
+#+begin_src emacs-lisp
+  (use-package nerd-icons-dired
+    :ensure t
+    :hook
+    (dired-mode . nerd-icons-dired-mode))
+#+end_src
+
+*** Zooming In/Out
+
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-+") 'text-scale-increase)
+  (global-set-key (kbd "C--") 'text-scale-decrease)
+#+end_src
+
+** Line Numbers
+
+#+begin_src emacs-lisp
+  (column-number-mode)
+  (setq display-line-numbers 'visual)
+  (global-display-line-numbers-mode 1)
+#+end_src
+
+Disable line numbers for some modes
+
+#+begin_src emacs-lisp
+  (dolist (mode '(org-mode-hook
+  		term-mode-hook
+  		eshell-mode-hook
+  		dashboard-mode-hook))
+    (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src
+
+* Completions
+** Consult
+
+#+begin_src emacs-lisp
+  ;; Example configuration for Consult
+  (use-package consult
+    :ensure t
+    ;; Replace bindings. Lazily loaded by `use-package'.
+    :bind (;; C-c bindings in `mode-specific-map'
+           ("C-c M-x" . consult-mode-command)
+           ("C-c h" . consult-history)
+           ("C-c k" . consult-kmacro)
+           ("C-c m" . consult-man)
+           ("C-c i" . consult-info)
+           ([remap Info-search] . consult-info)
+           ;; C-x bindings in `ctl-x-map'
+           ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+           ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+           ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+           ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+           ("C-x t b" . consult-buffer-other-tab)    ;; orig. switch-to-buffer-other-tab
+           ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+           ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+           ;; Custom M-# bindings for fast register access
+           ("M-#" . consult-register-load)
+           ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+           ("C-M-#" . consult-register)
+           ;; Other custom bindings
+           ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+           ;; M-g bindings in `goto-map'
+           ("M-g e" . consult-compile-error)
+           ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+           ("M-g g" . consult-goto-line)             ;; orig. goto-line
+           ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+           ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+           ("M-g m" . consult-mark)
+           ("M-g k" . consult-global-mark)
+           ("M-g i" . consult-imenu)
+           ("M-g I" . consult-imenu-multi)
+           ;; M-s bindings in `search-map'
+           ("M-s d" . consult-find)                  ;; Alternative: consult-fd
+           ("M-s c" . consult-locate)
+           ("M-s g" . consult-grep)
+           ("M-s G" . consult-git-grep)
+           ("M-s r" . consult-ripgrep)
+           ("M-s l" . consult-line)
+           ("M-s L" . consult-line-multi)
+           ("M-s k" . consult-keep-lines)
+           ("M-s u" . consult-focus-lines)
+           ;; Isearch integration
+           ("M-s e" . consult-isearch-history)
+           :map isearch-mode-map
+           ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+           ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+           ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+           ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
+           ;; Minibuffer history
+           :map minibuffer-local-map
+           ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+           ("M-r" . consult-history))                ;; orig. previous-matching-history-element
+
+    ;; Enable automatic preview at point in the *Completions* buffer. This is
+    ;; relevant when you use the default completion UI.
+    :hook (completion-list-mode . consult-preview-at-point-mode)
+
+    ;; The :init configuration is always executed (Not lazy)
+    :init
+
+    ;; Optionally configure the register formatting. This improves the register
+    ;; preview for `consult-register', `consult-register-load',
+    ;; `consult-register-store' and the Emacs built-ins.
+    (setq register-preview-delay 0.5
+          register-preview-function #'consult-register-format)
+
+    ;; Optionally tweak the register preview window.
+    ;; This adds thin lines, sorting and hides the mode line of the window.
+    (advice-add #'register-preview :override #'consult-register-window)
+
+    ;; Use Consult to select xref locations with preview
+    (setq xref-show-xrefs-function #'consult-xref
+          xref-show-definitions-function #'consult-xref)
+
+    ;; Configure other variables and modes in the :config section,
+    ;; after lazily loading the package.
+    :config
+
+    ;; Optionally configure preview. The default value
+    ;; is 'any, such that any key triggers the preview.
+    ;; (setq consult-preview-key 'any)
+    ;; (setq consult-preview-key "M-.")
+    ;; (setq consult-preview-key '("S-<down>" "S-<up>"))
+    ;; For some commands and buffer sources it is useful to configure the
+    ;; :preview-key on a per-command basis using the `consult-customize' macro.
+    (consult-customize
+     consult-theme :preview-key '(:debounce 0.2 any)
+     consult-ripgrep consult-git-grep consult-grep
+     consult-bookmark consult-recent-file consult-xref
+     consult--source-bookmark consult--source-file-register
+     consult--source-recent-file consult--source-project-recent-file
+     ;; :preview-key "M-."
+     :preview-key '(:debounce 0.4 any))
+
+    ;; Optionally configure the narrowing key.
+    ;; Both < and C-+ work reasonably well.
+    (setq consult-narrow-key "<") ;; "C-+"
+
+    ;; Optionally make narrowing help available in the minibuffer.
+    ;; You may want to use `embark-prefix-help-command' or which-key instead.
+    ;; (keymap-set consult-narrow-map (concat consult-narrow-key " ?") #'consult-narrow-help)
+  )
+#+end_src
+
+** Icons
+
+#+begin_src emacs-lisp
+  (use-package nerd-icons-completion
+    :ensure t
+    :after marginalia
+    :config
+    (nerd-icons-completion-mode)
+    (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
+#+end_src
+
+** Vertico
+
+#+begin_src emacs-lisp
+  (use-package vertico
+    :ensure t
+    :bind (:map vertico-map
+           ("C-j" . vertico-next)
+           ("C-k" . vertico-previous))
+    :custom
+    (vertico-cycle t)
+    :init
+    (vertico-mode))
+#+end_src
+
+** Marginalia
+
+#+begin_src emacs-lisp
+  (use-package marginalia
+    :ensure t
+    :config
+    (marginalia-mode))
+#+end_src
+
+** Orderless
+
+#+begin_src emacs-lisp
+  (use-package orderless
+    :ensure t
+    :custom
+    (completion-styles '(orderless))
+    ;; (completion-category-defaults nil)
+    (orderless-matching-styles
+     '(orderless-flex)
+     )
+    )
+  (setq completion-ignore-case t)
+    ;; (setq comletion-styles '(orderless)
+    ;; 	completion-category-defaults nil
+    ;; 	completion-category-overrides '((file (styles partial-completion)))))
+#+end_src
+
+* Evil 
+
+#+begin_src emacs-lisp
+  (use-package evil
+    :ensure t
+    :init
+    (setq evil-want-C-u-scroll 1)
+    (setq evil-split-window-below t)
+    (setq evil-vsplit-window-right t)
+    (setq evil-undo-system 'undo-redo)
+    (setq evil-want-keybinding nil)
+    (setq select-enable-clipboard nil) ; Vim-style clipboard
+    ; :hook (evil-insert-state-entry-hook . (lambda () (setq display-line-numbers 'relative)))
+    :config
+    (evil-mode 1)
+    (evil-set-leader 'normal (kbd "SPC")))
+#+end_src
+
+** dired
+
+#+begin_src emacs-lisp
+  (evil-define-key 'normal dired-mode-map
+    (kbd "h") 'dired-up-directory
+    (kbd "l") 'dired-find-file)
+#+end_src
+
+** evil-collection
+#+begin_src emacs-lisp
+  (use-package evil-collection
+    :ensure t
+    :after evil
+    :custom (evil-collection-outline-bind-tab-p t)
+    :init (evil-collection-init))
+#+end_src
+
+** evil-commentary
+#+begin_src emacs-lisp
+  (use-package evil-commentary
+    :ensure t
+    :after evil
+    :config
+    (evil-commentary-mode 1))
+#+end_src
+
+** evil-surround
+#+begin_src emacs-lisp
+  (use-package evil-surround
+    :ensure t
+    :after evil
+    :config
+    (global-evil-surround-mode 1))
+#+end_src
+
+* Programming
+** Git
+
+#+begin_src emacs-lisp
+  (use-package magit
+    :ensure t)
+#+end_src
+
+** Languages
+*** Nix
+#+begin_src emacs-lisp
+  (use-package nix-mode
+    :ensure t
+    :mode "\\.nix\\'")
+
+  (use-package eglot
+    :config
+    ;; Ensure `nil` is in your PATH.
+    (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
+    :hook
+    (nix-mode . eglot-ensure))
+#+end_src
+* Packages
+** gptel
+
+#+begin_src emacs-lisp
+  (use-package gptel
+    :ensure t
+    :config
+    (setq
+     gptel-model "llama3.1:8b"
+     gptel-backend (gptel-make-ollama "Ollama"
+                 :host "localhost:11434"
+                 :stream t
+                 :models '("llama3.1:8b"))))
+#+end_src
+
+** rainbow-mode
+#+begin_src emacs-lisp
+  (use-package rainbow-mode
+    :ensure t)
+#+end_src
+
+** treesit-auto
+Hello world
+#+begin_src emacs-lisp
+  (use-package treesit-auto
+    :config
+    (global-treesit-auto-mode))
+#+end_src
+
+* Org Mode
+
+#+begin_src emacs-lisp
+  ;; (defun efs/org-mode-setup ()
+  ;;   (org-indent-mode)
+  ;;   (visual-line-mode 1))
+
+  ;; ;; Org Mode Configuration ------------------------------------------------------
+
+  ;; (defun efs/org-font-setup ()
+  ;;   ;; Replace list hyphen with dot
+  ;;   (font-lock-add-keywords 'org-mode
+  ;;                           '(("^ *\\([-]\\) "
+  ;;                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+  ;;   ;; Set faces for heading levels
+  ;;   (dolist (face '((org-level-1 . 1.2)
+  ;;                   (org-level-2 . 1.1)
+  ;;                   (org-level-3 . 1.05)
+  ;;                   (org-level-4 . 1.0)
+  ;;                   (org-level-5 . 1.1)
+  ;;                   (org-level-6 . 1.1)
+  ;;                   (org-level-7 . 1.1)
+  ;;                   (org-level-8 . 1.1)))
+  ;;     ;; (set-face-attribute (car face) nil :font "Inter Display" :weight 'regular :height (cdr face))
+  ;;     )
+
+  ;;   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+  ;;   ;; (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+  ;;   ;; (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+  ;;   ;; (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
+  ;;   ;; (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+  ;;   ;; (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+  ;;   ;; (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+  ;;   ;; (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
+
+  ;; (use-package org
+  ;;   :hook (org-mode . efs/org-mode-setup)
+  ;;   :config
+  ;;   (setq org-ellipsis " ▾")
+  ;;   (efs/org-font-setup))
+
+  ;; (use-package org-bullets
+  ;;   :ensure t
+  ;;   :after org
+  ;;   :hook (org-mode . org-bullets-mode)
+  ;;   :custom
+  ;;   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+
+  ;; (defun efs/org-mode-visual-fill ()
+  ;;   (setq visual-fill-column-width 100
+  ;;         visual-fill-column-center-text t)
+  ;;   (visual-fill-column-mode 1))
+
+  ;; (use-package visual-fill-column
+  ;;   :ensure t
+  ;;   ;; :hook (org-mode . efs/org-mode-visual-fill)
+  ;;   )
+#+end_src
+
+#+begin_src emacs-lisp 
+  (custom-theme-set-faces
+   'user
+   '(org-block ((t (:inherit fixed-pitch))))
+   '(org-code ((t (:inherit (shadow fixed-pitch)))))
+   ;; '(org-document-info ((t (:foreground "dark orange"))))
+   '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+   '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+   ;; '(org-link ((t (:foreground "royal blue" :underline t))))
+   '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+   '(org-property-value ((t (:inherit fixed-pitch))) t)
+   '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+   ;; '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+   '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+   '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
+#+end_src
+
+#+begin_src emacs-lisp
+  (defun efs/org-mode-visual-fill ()
+    (setq visual-fill-column-width 100
+          visual-fill-column-center-text t)
+    (visual-fill-column-mode 1))
+
+  (use-package visual-fill-column
+    :ensure t
+    :hook (org-mode . efs/org-mode-visual-fill)
+    )
+#+end_src
+
+** Agenda
+
+#+begin_src emacs-lisp
+  ;; (setq org-agenda-files
+  ;;       '("~/org/Agenda.org"))
+#+end_src
+
+** Headers
+
+The =org-bullets= package gives us attractive bullets rather than asterisks.
+
+#+begin_src emacs-lisp
+  (use-package org-bullets
+    :ensure t)
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+#+end_src
+
+The =org-modern= package implements a modern style for Org buffers.
+
+#+begin_src emacs-lisp
+  ;; (use-package org-modern
+  ;;   :ensure t)
+  ;; (add-hook 'org-mode-hook #'org-modern-mode)
+#+end_src
+
+Level headers.
+
+#+begin_src emacs-lisp
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (custom-set-faces
+   '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
+    '(org-level-2 ((t (:inherit outline-2 :height 1.6))))
+    '(org-level-3 ((t (:inherit outline-3 :height 1.5))))
+    '(org-level-4 ((t (:inherit outline-4 :height 1.4))))
+    '(org-level-5 ((t (:inherit outline-5 :height 1.3))))
+    '(org-level-6 ((t (:inherit outline-5 :height 1.2))))
+    '(org-level-7 ((t (:inherit outline-5 :height 1.1)))))
+#+end_src
+
+** Styling
+
+Hides markers like *BOLD!* and /italic/ for example.
+
+#+begin_src emacs-lisp
+  (setq org-hide-emphasis-markers t)
+#+end_src
+
+** Indent
+
+Indent text in =.org= documents according to outline structure.
+
+#+begin_src emacs-lisp
+  (add-hook 'org-mode-hook 'org-indent-mode)
+#+end_src
+
+Set src block automatic indent to 0 instead of 2.
+
+#+begin_src emacs-lisp
+  ;; (setq org-edit-src-content-indentation 0) 
+#+end_src
+
+** Roam
+
+#+begin_src emacs-lisp
+  ;; (setq org-roam-directory (file-truename "~/org-roam"))
+  (use-package org-roam
+    :ensure t
+    :init
+    (setq org-roam-v2-ack t)
+    :custom
+    (org-roam-directory "~/org-roam")
+    (org-roam-completion-everywhere t)
+    :bind (("C-c n l" . org-roam-buffer-toggle)
+           ("C-c n f" . org-roam-node-find)
+  	 ("C-c n g" . org-roam-graph)
+           ("C-c n i" . org-roam-node-insert)
+  	 ("C-c n c" . org-roam-capture)
+  	 ;; Dailies
+  	 ("C-c n j" . org-roam-dailies-capture-today))
+    :config
+    (require 'org-roam-dailies) ;; Ensure the keymap is available
+    (org-roam-db-autosync-mode))
+#+end_src
+
+* Dired
+
+#+begin_src emacs-lisp
+  (use-package dired-preview
+    :ensure t)
+#+end_src
+
+* General
+
+Set initial frame size.
+
+#+begin_src emacs-lisp
+  ;; (setq initial-frame-alist '((width . 160) (height . 40)))
+#+end_src
+
+Center frame on screen.
+
+#+begin_src emacs-lisp
+  ;; (when (window-system)
+  ;;   (set-frame-position (selected-frame) (/ (window-width) 2) (/ (window-height) 2)))
+#+end_src
+
+#+begin_src emacs-lisp
+  (recentf-mode 1)
+  (savehist-mode 1)
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (setq ring-bell-function 'ignore)
+#+end_src
+
+More responsive EchoAea
+
+#+begin_src emacs-lisp
+  (setq echo-keystrokes 0.01)
+#+end_src
+
+** Auto Save + Backup
+
+#+begin_src emacs-lisp
+  (setq auto-save-file-name-transforms
+        '((".*" "~/.emacs.d/auto-save-list/" t))
+        backup-directory-alist
+        '(("." "~/.emacs.d/backups/" t)))
+#+end_src
+
+* User Interface
+** auto-dark (Rosé Pine Theme)
+
+#+begin_src emacs-lisp
+  (use-package auto-dark
+    :ensure t
+    :config 
+    (setq auto-dark-dark-theme 'doom-rose-pine)
+    (setq auto-dark-light-theme 'doom-rose-pine-dawn)
+    ;; (setq auto-dark-polling-interval-seconds 5)
+    (setq auto-dark-allow-osascript nil)
+    (setq auto-dark-allow-powershell nil)
+    ;; (setq auto-dark-detection-method nil) ;; dangerous to be set manually
+
+    (add-hook 'auto-dark-dark-mode-hook
+      (lambda ()
+        (setq dimmer-fraction 0.20)
+        (set-background-color "black")))
+
+    (add-hook 'auto-dark-light-mode-hook
+      (lambda ()
+        (setq dimmer-fraction 0.30)))
+
+    (auto-dark-mode t))
+#+end_src
+
+** Auto Dim Inactive windows
+
+#+begin_src emacs-lisp
+  (use-package dimmer
+    :ensure t
+    :init
+    :config
+    (setq dimmer-fraction 0.20)
+    (dimmer-mode t))
+#+end_src
+
+** dashboard
+
+#+begin_src emacs-lisp
+  (use-package dashboard
+    :ensure t
+    :init
+    (setq dashboard-banner-logo-title nil)
+    (setq dashboard-center-content t)
+    (setq dashboard-display-icons-p t)
+    (setq dashboard-icon-type 'nerd-icons) 
+    (setq dashboard-set-heading-icons t)
+    (setq dashboard-set-file-icons t)
+    :config
+    (dashboard-setup-startup-hook))
+#+end_src
+
+** Helpful
+
+#+begin_src emacs-lisp
+  (use-package helpful
+    :ensure t
+    :config
+    (defalias 'describe-key 'helpful-key)
+    (defalias 'describe-function 'helpful-callable)
+    (defalias 'describe-variable 'helpful-variable)
+    (defalias 'describe-symbol 'helpful-symbol))
+#+end_src
+
+** Modeline
+
+#+begin_src emacs-lisp
+  ;; (use-package doom-modeline
+  ;;   :ensure t
+  ;;   :init (doom-modeline-mode 1)
+  ;;   :custom ((doom-modeline-height 15)))
+#+end_src
+
+
+** Keycast
+
+#+begin_src emacs-lisp
+  ;; (use-package keycast
+  ;;   :ensure t)
+#+end_src

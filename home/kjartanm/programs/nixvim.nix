@@ -6,5 +6,7 @@
 
   programs.nixvim = {
     enable = true;
+    colorschemes.rose-pine.enable = true;
+    plugins.lsp.servers.nixd.enable = true;
   };
 }

@@ -15,10 +15,10 @@
         port = 1025;
         tls.useStartTls = true;
       };
-      thunderbird = {
-        enable = true;
-        profiles = [ "kjartanMasson" ];
-      };
+      # thunderbird = {
+      #   enable = true;
+      #   profiles = [ "kjartanMasson" ];
+      # };
     };
     personalGmail = {
       # primary = true;
@@ -35,15 +35,15 @@
         port = 465;
         tls.enable = true;
       };
-      thunderbird = {
-        enable = true;
-        profiles = [ "kjartanMasson" ];
-        settings = id: {
-          # Authenticate OAuth2 through Thunderbird
-          "mail.server.server_${id}.authMethod" = 10;
-          "mail.smtpserver.smtp_${id}.authMethod" = 10;
-        };
-      };
+      # thunderbird = {
+      #   enable = true;
+      #   profiles = [ "kjartanMasson" ];
+      #   settings = id: {
+      #     # Authenticate OAuth2 through Thunderbird
+      #     "mail.server.server_${id}.authMethod" = 10;
+      #     "mail.smtpserver.smtp_${id}.authMethod" = 10;
+      #   };
+      # };
     };
   };
 }

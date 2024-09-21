@@ -16,8 +16,10 @@
     ./packages.nix
     ./index.nix
     ./printer.nix
+    ./ollama.nix
+    ./alpaca.nix
     ../hardware/keyboard
-    ../hardware/bluetooth.nix
+    # ../hardware/bluetooth.nix
     ../hardware/gcAdapter.nix
   ];
 
