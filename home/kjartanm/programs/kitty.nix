@@ -14,7 +14,7 @@
   '';
   programs.kitty = {
     enable = true;
-    theme = "Rosé Pine";
+    themeFile = "Rosé Pine";
     font = {
       name = "Hasklug Nerd Font";
       size = 14;
