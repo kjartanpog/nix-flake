@@ -14,7 +14,8 @@
     #   ;; (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
     #   ;; (require '${inputs.karthink-emacs}/lisp/setup-core.el)
     # '' + builtins.readFile ./init.el);
-    config = ./init.el;
+    # config = ./init.el;
+    config = ./init.org;
     defaultInitFile = true;
     package = pkgs.emacs-unstable-pgtk;
     alwaysTangle = true;
@@ -41,5 +42,5 @@ in {
 
   # home.file.".config/autostart/emacs.desktop".text = builtins.replaceStrings ["Exec=emacs %F\n"] ["Exec=emacs -mm\n"] (builtins.readFile "${pkgs.emacs-unstable-pgtk}/share/applications/emacs.desktop");
   # home.file.".local/share/applications/emacs.desktop".text = builtins.replaceStrings ["Exec=emacs %F\n"] ["Exec=emacs -mm\n"] (builtins.readFile "${pkgs.emacs-unstable-pgtk}/share/applications/emacs.desktop");
-  home.file.".local/share/applications/emacs-client-vterm.desktop".text = builtins.replaceStrings ["Exec=emacs %F\n" "Name=Emacs\n" "Icon=emacs\n"] ["Exec=emacsclient -c -e '(vterm)'\n" "Name=vterm\n" "Icon=${./vterm.png}\n"] (builtins.readFile "${pkgs.emacs-unstable-pgtk}/share/applications/emacs.desktop");
+  # home.file.".local/share/applications/emacs-client-vterm.desktop".text = builtins.replaceStrings ["Exec=emacs %F\n" "Name=Emacs\n" "Icon=emacs\n"] ["Exec=emacsclient -c -e '(vterm)'\n" "Name=vterm\n" "Icon=${./vterm.png}\n"] (builtins.readFile "${pkgs.emacs-unstable-pgtk}/share/applications/emacs.desktop");
 }
